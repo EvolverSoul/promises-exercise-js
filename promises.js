@@ -17,7 +17,6 @@ const willIGetNewPhone = new Promise(
 );
 
 // Second Promise
-
 async function showOff(phone) {
     return new Promise(
         (resolve, reject) => {
@@ -28,3 +27,23 @@ async function showOff(phone) {
         }
     );
 };
+
+// call our promise
+async function askMom() {
+    try {
+        console.log("Before asking Mom...");
+
+        let phone = await willIGetNewPhone;
+        let message = await showOff(phone);
+
+        console.log(message);
+        console.log("After asking Mom...");
+    }
+    catch (error) {
+        console.log(error.message);
+    };
+}
+
+(async () => {
+    await askMom();
+})();
